@@ -46,11 +46,7 @@ class LocationServicesDialogBoxModule extends ReactContextBaseJavaModule impleme
             isEnabled = isEnabled && locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         }
         if (!isEnabled) {
-            if (activityResult) {
-                promiseCallback.reject(new Throwable("disabled"));
-            } else {
-                displayPromptForEnablingGPS(currentActivity, map, promiseCallback);
-            }
+            promiseCallback.reject(new Throwable("disabled"));
         } else {
             promiseCallback.resolve("enabled");
         }
